@@ -14,6 +14,6 @@ class web
 
     public function __construct()
     {
-        dd(3);
+        dd('ok');
     }
 }
