@@ -6,12 +6,15 @@
 	define('APP', ROOT . '/../app');
 	define('DEBUG', ture);
 
+	if (DEBUG) {
+		ini_set('diplay_error', 'On');
+	}
+
 	// 加载函数库
 	include CORE . '/comment/function.php';
 
 	// 类的自动加载
 	include CORE . '/ly.php';
-	spl_autoload_register('core\ly::load');
+	spl_autoload_register('\core\ly::load');
 
-	core\ly::run();
-?>
+	\core\ly::run();

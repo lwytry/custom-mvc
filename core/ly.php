@@ -14,13 +14,14 @@ class ly
 
 	public function run()
 	{
-		$route = new core\lib\web();
+		$route = new \routes\web();
 	}
 
 	static function  load($class)
 	{
-		include ROOT . '/../core' . $class . '.php';
+	    // 自动加载类库
+        $class = str_replace('\\', '/', $class);
+		include ROOT . '/../' . $class . '.php';
 	}
 
 }
-?>
