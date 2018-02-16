@@ -19,6 +19,7 @@ class IndexController extends \core\ly {
         // 视图类
         $data = "welcom custom";
         $this->assign('data', $data);
+        $this->assign('title', '视图文件');
         $this->display('index.html');
     }
 }
