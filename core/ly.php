@@ -81,8 +81,14 @@ class ly
     {
         $file = APP . '/views/' . $file;
         if (is_file($file)) {
-            extract($this->assign);
-            include($file);
+            $loader = new \Twig_Loader_Filesystem(APP . '/views');
+            $twig = new \Twig_Environment($loader, array(
+                'cache' => DOC . '/cache/template',
+                'debug' => DEBUG
+            ));
+
+            $template = $twig->load('index.html');
+            $template->display($this->assign?$this->assign:'');
         }
     }
 
