@@ -4,6 +4,7 @@
 	// 项目核心文件
 	define('CORE', ROOT . '/../core');
 	define('APP', ROOT . '/../app');
+	define('DOC', ROOT . '/..');
 	define('DEBUG', ture);
 
 	if (DEBUG) {

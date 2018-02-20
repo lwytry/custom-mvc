@@ -7,6 +7,8 @@
  */
 namespace routes;
 
+use core\lib\conf;
+
 /**
  * Class web
  * @package routes
@@ -17,7 +19,7 @@ namespace routes;
 
 class web
 {
-    public $ctlr;
+    public $ctrl;
     public $action;
 
     public function __construct()
@@ -27,7 +29,7 @@ class web
             $patharr = explode('/', trim($path, '/'));
 
             if (isset($patharr[0])) {
-                $this->ctlr = $patharr[0];
+                $this->ctrl = $patharr[0];
                 unset($patharr[0]);
             }
 
@@ -35,7 +37,7 @@ class web
                 $this->action = $patharr[1];
                 unset($patharr[1]);
             } else {
-                $this->action = 'index';
+                $this->action = conf::get('action', 'route');
             }
 
             // url 多余部分转换为参数
@@ -49,8 +51,8 @@ class web
                 }
             }
         } else {
-            $this->ctlr = 'index';
-            $this->action = 'index';
+            $this->ctrl = conf::get('ctrl', 'route');
+            $this->action = conf::get('action', 'route');
         }
     }
 }

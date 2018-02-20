@@ -17,10 +17,13 @@ class ly
 
 	static public function run()
 	{
+	    // 加载日志类
+        \core\lib\log::init();
+        \core\lib\log::log($_SERVER, 'custom');
 	    // 加载路由类
 		$route = new \routes\web();
 		// 加载控制器
-        $ctlr = $route->ctlr;
+        $ctlr = $route->ctrl;
         $action = $route->action;
         self::parse($ctlr, $action);
 	}
