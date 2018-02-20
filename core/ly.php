@@ -23,23 +23,24 @@ class ly
 	    // 加载路由类
 		$route = new \routes\web();
 		// 加载控制器
-        $ctlr = $route->ctrl;
+        $ctrl = $route->ctrl;
         $action = $route->action;
-        self::parse($ctlr, $action);
+        self::parse($ctrl, $action);
 	}
 
 	/*
 	 * 加载控制器
 	 */
-    static public function parse($ctlr, $action) {
-	    $ctlrfile = APP . '/controllers/web/home/' . ucfirst($ctlr) . 'Controller.php';
-	    $ctlrclass = '\\app\\Controllers\\Web\\Home\\' . ucfirst($ctlr) . 'Controller';
-	    if (is_file($ctlrfile)) {
-            include_once ($ctlrfile);
-            $ctlr = new $ctlrclass;
-            $ctlr->$action();
+    static public function parse($ctrl, $action) {
+	    $ctrlfile = APP . '/controllers/web/home/' . ucfirst($ctrl) . 'Controller.php';
+        $ctrlclass = '\\app\\Controllers\\Web\\Home\\' . ucfirst($ctrl) . 'Controller';
+
+	    if (is_file($ctrlfile)) {
+            include $ctrlfile;
+            $ctrl = new $ctrlclass;
+            $ctrl->$action();
         } else {
-	        throw new \Exception('控制器' . $ctlr . '找不到');
+	        throw new \Exception('控制器' . $ctrl . '找不到');
         }
     }
 

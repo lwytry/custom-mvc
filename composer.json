@@ -1,0 +1,17 @@
+{
+  "name": "custom",
+  "description": "The Custom PHP Framework.",
+  "keywords": ["framework", "custom"],
+  "license": "MIT",
+  "type": "framework",
+  "require": {
+    "php": ">=5.6.0",
+    "filp/whoops": "*",
+    "symfony/var-dumper": "^4.0"
+  },
+
+  "config" : {
+    "preferred-install": "dist",
+    "vendor-dir": "../vendor"
+  }
+}

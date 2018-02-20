@@ -7,7 +7,13 @@
 	define('DOC', ROOT . '/..');
 	define('DEBUG', ture);
 
+	// 引入vendor
+    include DOC . '/../vendor/autoload.php';
+
 	if (DEBUG) {
+        $whoops = new \Whoops\Run;
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
 		ini_set('diplay_error', 'On');
 	}
 

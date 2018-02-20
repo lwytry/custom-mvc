@@ -25,7 +25,7 @@ class web
     public function __construct()
     {
         if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '/') {
-            $path = $_SERVER['REQUEST_URI'];
+            $path = substr($_SERVER['REQUEST_URI'],0,strrpos($_SERVER['REQUEST_URI'],'?'));
             $patharr = explode('/', trim($path, '/'));
 
             if (isset($patharr[0])) {
@@ -54,5 +54,6 @@ class web
             $this->ctrl = conf::get('ctrl', 'route');
             $this->action = conf::get('action', 'route');
         }
+
     }
 }
