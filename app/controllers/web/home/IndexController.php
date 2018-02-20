@@ -1,12 +1,15 @@
 <?php
 namespace app\Controllers\Web\Home;
 
+use core\lib\model;
+
 class IndexController extends \core\ly {
     public function __construct()
     {
     }
 
-    public function index() {
+    public function index()
+    {
         echo "<h1>wellcome! </h1>";
         // 使用数据库
         $model = new \core\lib\model();
@@ -15,7 +18,8 @@ class IndexController extends \core\ly {
         dd($ret->fetchAll());
     }
 
-    public function showView() {
+    public function showView()
+    {
         // 视图类
         $data = "welcom custom";
         $this->assign('data', $data);
@@ -23,11 +27,19 @@ class IndexController extends \core\ly {
         $this->display('index.html');
     }
 
-    public function conf() {
+    public function conf()
+    {
 //        $ret = \core\lib\conf::get('ctrl', 'route');
 //        $ret = \core\lib\conf::get('action', 'route');
 //        dd($ret);
         $ret = config('databases.dsn');
         dd($ret);
+    }
+
+    public function smysql()
+    {
+        $model = new \app\model\order();
+        $ret = $model->lists();
+        dump($ret);
     }
 }

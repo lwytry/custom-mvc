@@ -6,7 +6,9 @@
  * Time: 19:25
  */
 return array(
-    'dsn' => 'mysql:host=localhost;dbname=glass',
+    'database_type' => 'mysql',
+    'database_name' => 'glass',
+    'server' => 'localhost',
     'username' => 'root',
-    'passwd' => ''
+    'password' => '',
 );

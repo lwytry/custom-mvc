@@ -25,7 +25,13 @@ class web
     public function __construct()
     {
         if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '/') {
-            $path = substr($_SERVER['REQUEST_URI'],0,strrpos($_SERVER['REQUEST_URI'],'?'));
+
+            $path = $_SERVER['REQUEST_URI'];
+            // 若以?携带参数另做处理
+            if (strstr($_SERVER['REQUEST_URI'], '?')) {
+                $path = substr($_SERVER['REQUEST_URI'],0,strrpos($_SERVER['REQUEST_URI'],'?'));
+            }
+
             $patharr = explode('/', trim($path, '/'));
 
             if (isset($patharr[0])) {

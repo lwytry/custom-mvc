@@ -7,17 +7,11 @@
  */
 namespace core\lib;
 
-class model extends \PDO
+class model extends \Medoo\Medoo
 {
     public function __construct()
     {
-        $dsn = config('databases.dsn');
-        $username = config('databases.username');
-        $passwd = config('databases.passwd');
-        try{
-            parent::__construct($dsn, $username, $passwd);
-        }catch (\PDOException $e) {
-            dd($e->getMessage());
-        }
+        $options = config('databases');
+        parent::__construct($options);
     }
 }
