@@ -8,7 +8,7 @@
 	define('DEBUG', ture);
 
 	// 引入vendor
-    include DOC . '/../vendor/autoload.php';
+    	include DOC . '/../vendor/autoload.php';
 
 	if (DEBUG) {
         $whoops = new \Whoops\Run;
